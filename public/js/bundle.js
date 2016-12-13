@@ -31651,6 +31651,7 @@
 	'use strict';
 
 	var React = __webpack_require__(2);
+	var Clock = __webpack_require__(365);
 
 	var Countdown = React.createClass({
 	    displayName: 'Countdown',
@@ -31660,11 +31661,7 @@
 	        return React.createElement(
 	            'div',
 	            null,
-	            React.createElement(
-	                'p',
-	                null,
-	                'Countdown'
-	            )
+	            React.createElement(Clock, { totalSeconds: 129 })
 	        );
 	    }
 
@@ -31735,7 +31732,7 @@
 
 
 	// module
-	exports.push([module.id, ".top-bar, .top-bar ul {\n  background-color: #333333; }\n\n.top-bar .menu-text {\n  color: white; }\n\n.top-bar .menu > .menu-text > a {\n  display: inline;\n  padding: 0; }\n\n.top-bar .active-link {\n  font-weight: bold; }\n\nul.nav {\n  line-height: 50px; }\n  ul.nav a {\n    padding: 0 10px; }\n\n.navibar {\n  background: transparent !important;\n  background-color: rgba(255, 255, 255, 0.75) !important; }\n\n.main-component-frame {\n  margin-top: 50px; }\n", ""]);
+	exports.push([module.id, ".top-bar, .top-bar ul {\n  background-color: #333333; }\n\n.top-bar .menu-text {\n  color: white; }\n\n.top-bar .menu > .menu-text > a {\n  display: inline;\n  padding: 0; }\n\n.top-bar .active-link {\n  font-weight: bold; }\n\nul.nav {\n  line-height: 50px; }\n  ul.nav a {\n    padding: 0 10px; }\n\n.navibar {\n  background: transparent !important;\n  background-color: rgba(255, 255, 255, 0.75) !important; }\n\n.clock {\n  align-items: center;\n  background-color: #B5D0E2;\n  border: 2px solid #2099E8;\n  border-radius: 50%;\n  display: flex;\n  height: 14rem;\n  justify-content: center;\n  margin: 10rem auto;\n  width: 14rem; }\n\n.clock-text {\n  color: white;\n  font-size: 2.25rem;\n  font-weight: 300; }\n\n.main-component-frame {\n  margin-top: 50px; }\n", ""]);
 
 	// exports
 
@@ -32047,6 +32044,53 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
+
+/***/ },
+/* 365 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(2);
+
+	var Clock = React.createClass({
+	    displayName: 'Clock',
+
+
+	    getDefaultProps: function getDefaultProps() {
+	        totalSeconds: 0;
+	    },
+
+	    propTypes: {
+	        totalSeconds: React.PropTypes.number
+	    },
+
+	    formatSeconds: function formatSeconds(totalSeconds) {
+	        var seconds = totalSeconds % 60;
+	        var minutes = Math.floor(totalSeconds / 60);
+	        var minuteString = minutes < 10 ? '0' + minutes : minutes;
+	        var secondsString = seconds < 10 ? '0' + seconds : seconds;
+	        return minuteString + ':' + secondsString;
+	    },
+
+	    render: function render() {
+	        var totalSeconds = this.props.totalSeconds;
+
+
+	        return React.createElement(
+	            'div',
+	            { className: 'clock' },
+	            React.createElement(
+	                'span',
+	                { className: 'clock-text' },
+	                this.formatSeconds(totalSeconds)
+	            )
+	        );
+	    }
+
+	});
+
+	module.exports = Clock;
 
 /***/ }
 /******/ ]);
