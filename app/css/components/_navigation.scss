@@ -15,4 +15,15 @@
     }
 }
 
+ul.nav {
+    line-height: 50px;
 
+    a {
+        padding: 0 10px;
+    }
+}
+.navibar {
+    //color: green;
+    background: transparent !important;
+    background-color: rgba(255,255,255,0.75) !important;
+}

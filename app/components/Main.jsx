@@ -7,7 +7,7 @@ var Main = React.createClass({
             <div>
                 <Navigation />
                 <div>
-                    <div>
+                    <div className="main-component-frame">
                         {this.props.children}
                     </div>
                 </div>
